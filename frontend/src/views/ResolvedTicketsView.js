@@ -46,7 +46,7 @@ const ResolvedTicketsView = () => {
   const sortedTickets = filteredTickets.sort((a, b) => new Date(b.resolvedAt) - new Date(a.resolvedAt));
 
   return (
-    <div className="p-4 font-sans bg-black">
+    <div className="p-4 font-sans bg-black min-h-screen">
       <h2 className="text-2xl mb-4 text-white">Resolved Tickets</h2>
       <div className="mb-4">
         <input
@@ -66,6 +66,7 @@ const ResolvedTicketsView = () => {
               <th className="sticky top-0 py-2 px-4 border-b">Date Resolved</th>
               <th className="sticky top-0 py-2 px-4 border-b">Company</th>
               <th className="sticky top-0 py-2 px-4 border-b">Department</th>
+              <th className="sticky top-0 py-2 px-4 border-b">Resolution</th>
             </tr>
           </thead>
           <tbody>
@@ -76,6 +77,7 @@ const ResolvedTicketsView = () => {
                 <td className="py-2 px-4 border-b text-white">{formatDate(ticket.resolvedAt)}</td>
                 <td className="py-2 px-4 border-b text-white">{ticket.companyCode}</td>
                 <td className="py-2 px-4 border-b text-white">{ticket.departments.join(', ')}</td>
+                <td className="py-2 px-4 border-b text-white">{ticket.resolution}</td>
               </tr>
             ))}
           </tbody>
