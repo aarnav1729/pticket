@@ -19,7 +19,7 @@ const FormView = () => {
     formData.append('companyCode', companyCode);
 
     try {
-      const response = await axios.post('http://localhost:5000/api/feedback', formData, {
+      const response = await axios.post('https://aft-099c.onrender.com/api/feedback', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }

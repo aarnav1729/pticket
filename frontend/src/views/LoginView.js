@@ -40,10 +40,6 @@ const LoginView = () => {
             required
           >
 
-background-color: #333;
-    color: white;
-    border: 1px solid #555;
-
             <option value="">Select a department</option>
             <option value="HR">HR</option>
             <option value="IT">IT</option>
