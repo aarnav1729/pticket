@@ -37,7 +37,8 @@ const ResolvedTicketsView = () => {
         ticket.companyCode.toLowerCase().includes(value) ||
         ticket.departments.join(', ').toLowerCase().includes(value) ||
         createdAtFormatted.includes(value) ||
-        resolvedAtFormatted.includes(value)
+        resolvedAtFormatted.includes(value) ||
+        (ticket.resolution && ticket.resolution.toLowerCase().includes(value))
       );
     });
     setFilteredTickets(filtered);
@@ -53,7 +54,7 @@ const ResolvedTicketsView = () => {
           type="text"
           value={search}
           onChange={handleSearchChange}
-          placeholder="Search by description, company, department, or date (YYYY-MM-DD)"
+          placeholder="Search by description, company, department, resolution, or date (YYYY-MM-DD)"
           className="w-full p-2 border rounded"
         />
       </div>

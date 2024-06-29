@@ -7,7 +7,7 @@ const FeedbackSchema = new mongoose.Schema({
   attachment: { type: String },
   companyCode: { type: String, required: true },
   status: { type: String, default: 'pending' },
-  resolution: { type: String },
+  resolution: { type: String }, // Ensure this field is included
   createdAt: { type: Date, default: Date.now },
   resolvedAt: { type: Date }
 });
