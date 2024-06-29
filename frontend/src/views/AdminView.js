@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Modal from 'react-modal';
+import moment from 'moment';
 
 Modal.setAppElement('#root'); // Ensure to match your root element
 
@@ -42,16 +43,28 @@ const AdminView = () => {
     setResolution('');
   };
 
+  const formatDate = (dateString) => {
+    const date = moment(dateString);
+    return date.isValid() ? date.format('MMMM Do YYYY, h:mm:ss a') : 'Invalid Date';
+  };
+
+  // Sort tickets: new tickets first, resolved tickets last
+  const sortedTickets = tickets.sort((a, b) => {
+    if (a.status === 'resolved' && b.status !== 'resolved') return 1;
+    if (a.status !== 'resolved' && b.status === 'resolved') return -1;
+    return new Date(b.createdAt) - new Date(a.createdAt);
+  });
+
   return (
     <div className="p-4 font-sans">
       <h2 className="text-2xl mb-4">Admin View</h2>
-      {tickets.map(ticket => (
+      {sortedTickets.map(ticket => (
         <div key={ticket._id} className="border p-4 mb-4 rounded">
           <p><strong>Description:</strong> {ticket.description}</p>
           <p><strong>Departments:</strong> {ticket.departments.join(', ')}</p>
           <p><strong>Status:</strong> {ticket.status}</p>
-          <p><strong>Created At:</strong> {new Date(ticket.createdAt).toLocaleString()}</p>
-          {ticket.resolvedAt && <p><strong>Resolved At:</strong> {new Date(ticket.resolvedAt).toLocaleString()}</p>}
+          <p><strong>Created At:</strong> {formatDate(ticket.createdAt)}</p>
+          {ticket.resolvedAt && <p><strong>Resolved At:</strong> {formatDate(ticket.resolvedAt)}</p>}
           <button onClick={() => handleChangeStatus(ticket._id, 'in progress')} className="bg-yellow-500 text-white p-2 rounded mr-2">
             In Progress
           </button>
@@ -65,9 +78,12 @@ const AdminView = () => {
           isOpen={!!selectedTicket}
           onRequestClose={closeModal}
           contentLabel="Resolution Modal"
-          className="bg-white p-4 rounded shadow-md mx-auto my-12 max-w-lg"
+          className="bg-white p-4 rounded shadow-md mx-auto my-12 max-w-lg relative"
           overlayClassName="fixed inset-0 bg-gray-600 bg-opacity-75 flex justify-center items-center"
         >
+          <button onClick={closeModal} className="absolute top-2 right-2 text-gray-500 hover:text-gray-700">
+            &times;
+          </button>
           <h3 className="text-xl mb-2">Enter Resolution for Ticket</h3>
           <textarea
             value={resolution}
