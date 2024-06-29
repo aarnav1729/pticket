@@ -4,6 +4,8 @@ import axios from 'axios';
 
 const AdminView = () => {
   const [tickets, setTickets] = useState([]);
+  const [selectedTicket, setSelectedTicket] = useState(null);
+  const [resolution, setResolution] = useState('');
 
   useEffect(() => {
     const fetchTickets = async () => {
@@ -18,9 +20,15 @@ const AdminView = () => {
   }, []);
 
   const handleChangeStatus = async (id, status) => {
+    if (status === 'resolved' && !resolution) {
+      setSelectedTicket(id);
+      return;
+    }
     try {
-      await axios.put(`http://localhost:5000/api/feedback/${id}`, { status });
-      setTickets(tickets.map(ticket => ticket._id === id ? { ...ticket, status } : ticket));
+      await axios.put(`http://localhost:5000/api/feedback/${id}`, { status, resolution });
+      setTickets(tickets.map(ticket => ticket._id === id ? { ...ticket, status, resolution } : ticket));
+      setSelectedTicket(null);
+      setResolution('');
     } catch (error) {
       console.error(error);
     }
@@ -42,6 +50,19 @@ const AdminView = () => {
           </button>
         </div>
       ))}
+      {selectedTicket && (
+        <div className="mt-4 p-4 border rounded">
+          <h3 className="text-xl mb-2">Enter Resolution for Ticket</h3>
+          <textarea
+            value={resolution}
+            onChange={(e) => setResolution(e.target.value)}
+            className="w-full p-2 border rounded"
+          />
+          <button onClick={() => handleChangeStatus(selectedTicket, 'resolved')} className="bg-blue-500 text-white p-2 rounded mt-2">
+            Submit Resolution
+          </button>
+        </div>
+      )}
     </div>
   );
 };

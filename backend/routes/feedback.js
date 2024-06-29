@@ -45,12 +45,12 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Route to update feedback status
+// Route to update feedback status and resolution
 router.put('/:id', async (req, res) => {
   const { id } = req.params;
-  const { status } = req.body;
+  const { status, resolution } = req.body;
   try {
-    const feedback = await Feedback.findByIdAndUpdate(id, { status }, { new: true });
+    const feedback = await Feedback.findByIdAndUpdate(id, { status, resolution }, { new: true });
     res.json(feedback);
   } catch (error) {
     res.status(400).json({ error: error.message });
