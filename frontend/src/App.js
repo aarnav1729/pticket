@@ -7,6 +7,7 @@ import FormView from './views/FormView';
 import ManagerialView from './views/ManagerialView';
 import AdminView from './views/AdminView';
 import LoginView from './views/LoginView';
+import ResolvedTicketsView from './views/ResolvedTicketsView';
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
             <Route path="/login" element={<LoginView />} />
             <Route path="/managerial" element={<ManagerialView />} />
             <Route path="/admin" element={<AdminView />} />
+            <Route path="/resolved-tickets" element={<ResolvedTicketsView />} />
           </Routes>
         </main>
         <Footer />

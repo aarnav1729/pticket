@@ -16,6 +16,7 @@ const Header = () => {
       <nav className={`${isOpen ? 'block' : 'hidden'} md:flex`}>
         <Link to="/" className="block px-4 py-2">Form</Link>
         <Link to="/login" className="block px-4 py-2">Login</Link>
+        <Link to="/resolved-tickets" className="block px-4 py-2">Resolved Tickets</Link>
       </nav>
     </header>
   );

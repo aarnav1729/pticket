@@ -29,13 +29,15 @@ router.post('/', upload.single('attachment'), async (req, res) => {
   }
 });
 
-// Route to get feedbacks, optionally filtering by department
+// Route to get feedbacks, optionally filtering by department or status
 router.get('/', async (req, res) => {
-  const { department } = req.query;
+  const { department, status } = req.query;
   try {
     let feedbacks;
     if (department) {
       feedbacks = await Feedback.find({ departments: department });
+    } else if (status) {
+      feedbacks = await Feedback.find({ status });
     } else {
       feedbacks = await Feedback.find();
     }
