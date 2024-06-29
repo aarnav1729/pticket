@@ -1,0 +1,41 @@
+/* src/global.css */
+body, html {
+    background-color: black;
+    color: white;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'IBM Plex Sans', sans-serif;
+  }
+  
+  a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  input, textarea {
+    background-color: #333;
+    color: white;
+    border: 1px solid #555;
+  }
+  
+  table {
+    background-color: #111;
+    color: white;
+  }
+  
+  thead {
+    background-color: #222;
+  }
+  
+  tbody tr:hover {
+    background-color: #444;
+  }
+  
+  .border-gray-200 {
+    border-color: #555;
+  }
+  
+  .border-gray-600 {
+    border-color: #888;
+  }  

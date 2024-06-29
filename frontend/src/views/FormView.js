@@ -50,7 +50,7 @@ const FormView = () => {
           <textarea
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border rounded bg-gray-800 text-white border-white"
             required
           />
         </div>
@@ -88,7 +88,7 @@ const FormView = () => {
           <input
             type="file"
             onChange={(e) => setAttachment(e.target.files[0])}
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border rounded border-white bg-gray-800 text-white"
           />
         </div>
         <div>
@@ -96,7 +96,7 @@ const FormView = () => {
           <select
             value={companyCode}
             onChange={(e) => setCompanyCode(e.target.value)}
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border rounded bg-gray-800 text-white border-white"
             required
           >
             <option value="">Select a company</option>
@@ -104,7 +104,7 @@ const FormView = () => {
             <option value="company2">Company 2</option>
           </select>
         </div>
-        <button type="submit" className="bg-blue-500 text-white p-2 rounded">
+        <button type="submit" className="bg-blue-500 text-white p-2 rounded w-full text-center">
           Submit
         </button>
       </form>

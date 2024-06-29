@@ -36,9 +36,14 @@ const LoginView = () => {
           <select
             value={department}
             onChange={(e) => setDepartment(e.target.value)}
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border rounded bg-gray-800 text-white border-white"
             required
           >
+
+background-color: #333;
+    color: white;
+    border: 1px solid #555;
+
             <option value="">Select a department</option>
             <option value="HR">HR</option>
             <option value="IT">IT</option>
@@ -52,11 +57,11 @@ const LoginView = () => {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border rounded bg-gray-800 text-white border-white"
             required
           />
         </div>
-        <button type="submit" className="bg-blue-500 text-white p-2 rounded">
+        <button type="submit" className="bg-blue-500 text-white p-2 rounded w-full text-center">
           Login
         </button>
       </form>
