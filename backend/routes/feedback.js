@@ -50,7 +50,11 @@ router.put('/:id', async (req, res) => {
   const { id } = req.params;
   const { status, resolution } = req.body;
   try {
-    const feedback = await Feedback.findByIdAndUpdate(id, { status, resolution }, { new: true });
+    const updateFields = { status, resolution };
+    if (status === 'resolved') {
+      updateFields.resolvedAt = new Date();
+    }
+    const feedback = await Feedback.findByIdAndUpdate(id, updateFields, { new: true });
     res.json(feedback);
   } catch (error) {
     res.status(400).json({ error: error.message });

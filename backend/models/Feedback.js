@@ -7,7 +7,9 @@ const FeedbackSchema = new mongoose.Schema({
   attachment: { type: String },
   companyCode: { type: String, required: true },
   status: { type: String, default: 'pending' },
-  resolution: { type: String } // Add this field
+  resolution: { type: String },
+  createdAt: { type: Date, default: Date.now },
+  resolvedAt: { type: Date }
 });
 
 module.exports = mongoose.model('Feedback', FeedbackSchema);
