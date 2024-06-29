@@ -28,11 +28,11 @@ const LoginView = () => {
   };
 
   return (
-    <div className="p-4 font-sans">
-      <h2 className="text-2xl mb-4">Login</h2>
+    <div className="p-4 font-sans bg-black">
+      <h2 className="text-2xl mb-4 text-white">Login</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="block mb-2">Department</label>
+          <label className="block mb-2 text-white">Department</label>
           <select
             value={department}
             onChange={(e) => setDepartment(e.target.value)}
@@ -47,7 +47,7 @@ const LoginView = () => {
           </select>
         </div>
         <div>
-          <label className="block mb-2">Password</label>
+          <label className="block mb-2 text-white">Password</label>
           <input
             type="password"
             value={password}

@@ -46,8 +46,8 @@ const ResolvedTicketsView = () => {
   const sortedTickets = filteredTickets.sort((a, b) => new Date(b.resolvedAt) - new Date(a.resolvedAt));
 
   return (
-    <div className="p-4 font-sans">
-      <h2 className="text-2xl mb-4">Resolved Tickets</h2>
+    <div className="p-4 font-sans bg-black">
+      <h2 className="text-2xl mb-4 text-white">Resolved Tickets</h2>
       <div className="mb-4">
         <input
           type="text"
@@ -58,8 +58,8 @@ const ResolvedTicketsView = () => {
         />
       </div>
       <div className="overflow-x-auto">
-        <table className="min-w-full bg-white">
-          <thead className="bg-gray-200">
+        <table className="min-w-full bg-black">
+          <thead className="bg-white">
             <tr>
               <th className="sticky top-0 py-2 px-4 border-b">Description</th>
               <th className="sticky top-0 py-2 px-4 border-b">Date Created</th>
@@ -70,12 +70,12 @@ const ResolvedTicketsView = () => {
           </thead>
           <tbody>
             {sortedTickets.map(ticket => (
-              <tr key={ticket._id} className="hover:bg-gray-100">
-                <td className="py-2 px-4 border-b">{ticket.description}</td>
-                <td className="py-2 px-4 border-b">{formatDate(ticket.createdAt)}</td>
-                <td className="py-2 px-4 border-b">{formatDate(ticket.resolvedAt)}</td>
-                <td className="py-2 px-4 border-b">{ticket.companyCode}</td>
-                <td className="py-2 px-4 border-b">{ticket.departments.join(', ')}</td>
+              <tr key={ticket._id} className="hover:bg-gray-700">
+                <td className="py-2 px-4 border-b text-white">{ticket.description}</td>
+                <td className="py-2 px-4 border-b text-white">{formatDate(ticket.createdAt)}</td>
+                <td className="py-2 px-4 border-b text-white">{formatDate(ticket.resolvedAt)}</td>
+                <td className="py-2 px-4 border-b text-white">{ticket.companyCode}</td>
+                <td className="py-2 px-4 border-b text-white">{ticket.departments.join(', ')}</td>
               </tr>
             ))}
           </tbody>
