@@ -11,10 +11,10 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: 'http://localhost:3000' // Add your frontend URL here
+  origin: 'https://peaft.netlify.app/' 
 }));
 app.use(express.json());
-app.use(express.urlencoded({ extended: true })); // Add this to parse URL-encoded data
+app.use(express.urlencoded({ extended: true })); 
 
 // Logging middleware
 app.use((req, res, next) => {
