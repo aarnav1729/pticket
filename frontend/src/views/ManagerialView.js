@@ -94,7 +94,7 @@ const ManagerialView = () => {
       </div>
       <div className="overflow-x-auto">
         <table className="min-w-full bg-gray-900 shadow-md rounded-lg">
-          <thead className="bg-blue-500 text-white">
+          <thead className="bg-black text-white">
             <tr>
               <th className="sticky top-0 py-2 px-4 border-b ">Description</th>
               <th className="sticky top-0 py-2 px-4 border-b ">Date Created</th>
