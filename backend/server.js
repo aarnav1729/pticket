@@ -1,9 +1,10 @@
-// backend/server.js
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const feedbackRoutes = require('./routes/feedback');
+const cron = require('node-cron');
+const { sendWeeklyEmails } = require('./emailUtils');
 
 dotenv.config();
 
@@ -33,6 +34,12 @@ mongoose.connect(process.env.MONGODB_URI, {
 })
 .then(() => console.log('MongoDB connected'))
 .catch(err => console.log(err));
+
+// Schedule the task to run at 9 AM every Monday
+cron.schedule('0 9 * * 1', async () => {
+  console.log('Running weekly email task...');
+  await sendWeeklyEmails();
+});
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

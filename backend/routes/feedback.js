@@ -1,8 +1,8 @@
-// backend/routes/feedback.js
 const express = require('express');
 const multer = require('multer');
 const router = express.Router();
 const Feedback = require('../models/Feedback');
+const { sendEmail } = require('../emailUtils'); // Import sendEmail function
 
 const upload = multer({ dest: 'uploads/' }); // Specify the directory for storing uploaded files
 
@@ -15,15 +15,31 @@ router.post('/', upload.single('attachment'), async (req, res) => {
     return res.status(400).json({ error: 'All required fields must be filled' });
   }
 
+  // Add department emails based on the departments
+  const departmentEmails = departments.map(department => {
+    switch (department) {
+      case 'procurement':
+        return 'aarnavsingh836@gmail.com';
+      case 'stores':
+        return 'chhabraa@csp.edu';
+      default:
+        return null;
+    }
+  }).filter(email => email !== null);
+
   try {
     const feedback = new Feedback({
       description,
       departments: JSON.parse(departments),
+      departmentEmails, // Include department emails
       attachment,
       companyCode
     });
     await feedback.save();
     res.status(201).json(feedback);
+    
+    // Send email notification
+    await sendEmail(feedback);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
