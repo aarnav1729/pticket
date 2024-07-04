@@ -43,7 +43,7 @@ const FormView = () => {
 
   return (
     <div className="p-4 font-sans">
-      <h2 className="text-2xl mb-4">Submit an Anonymous Report</h2>
+      <h2 className="text-2xl mb-4">Submit an Request Report</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label className="block mb-2">Description of the issue</label>
