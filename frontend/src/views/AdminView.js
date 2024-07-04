@@ -15,7 +15,7 @@ const AdminView = () => {
 
   const fetchTickets = async () => {
     try {
-      const response = await axios.get('https://aft-099c.onrender.com/api/feedback');
+      const response = await axios.get('https://pticket.onrender.com/api/feedback');
       setTickets(response.data);
       setFilteredTickets(response.data);
     } catch (error) {
@@ -33,7 +33,7 @@ const AdminView = () => {
       return;
     }
     try {
-      await axios.put(`https://aft-099c.onrender.com/api/feedback/${id}`, { status, resolution });
+      await axios.put(`https://pticket.onrender.com/api/feedback/${id}`, { status, resolution });
       setResolution('');
       setSelectedTicket(null);
       fetchTickets();

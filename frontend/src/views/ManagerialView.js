@@ -18,7 +18,7 @@ const ManagerialView = () => {
 
   const fetchTickets = useCallback(async () => {
     try {
-      const response = await axios.get(`https://aft-099c.onrender.com/api/feedback?department=${department}`);
+      const response = await axios.get(`https://pticket.onrender.com/api/feedback?department=${department}`);
       setTickets(response.data);
       setFilteredTickets(response.data);
     } catch (error) {
@@ -36,7 +36,7 @@ const ManagerialView = () => {
       return;
     }
     try {
-      await axios.put(`https://aft-099c.onrender.com/api/feedback/${id}`, { status, resolution });
+      await axios.put(`https://pticket.onrender.com/api/feedback/${id}`, { status, resolution });
       setResolution('');
       setSelectedTicket(null);
       fetchTickets();

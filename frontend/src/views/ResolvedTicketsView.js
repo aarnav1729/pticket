@@ -11,7 +11,7 @@ const ResolvedTicketsView = () => {
   useEffect(() => {
     const fetchResolvedTickets = async () => {
       try {
-        const response = await axios.get('https://aft-099c.onrender.com/api/feedback?status=resolved');
+        const response = await axios.get('https://pticket.onrender.com/api/feedback?status=resolved');
         setTickets(response.data);
         setFilteredTickets(response.data);
       } catch (error) {
