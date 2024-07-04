@@ -10,9 +10,8 @@ const LoginView = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const passwords = {
-      HR: 'hrpassword',
-      IT: 'itpassword',
-      Finance: 'financepassword',
+      stores: 'storespassword',
+      procurement: 'password',
       Admin: 'adminpassword'
     };
 
@@ -41,9 +40,8 @@ const LoginView = () => {
           >
 
             <option value="">Select a department</option>
-            <option value="HR">HR</option>
-            <option value="IT">IT</option>
-            <option value="Finance">Finance</option>
+            <option value="procurement">Procurement</option>
+            <option value="stores">Stores</option>
             <option value="Admin">Admin</option>
           </select>
         </div>

@@ -60,26 +60,18 @@ const FormView = () => {
             <label className="flex items-center space-x-2">
               <input
                 type="checkbox"
-                value="HR"
+                value="procurement"
                 onChange={handleDepartmentChange}
               />
-              <span>HR</span>
+              <span>Procurement</span>
             </label>
             <label className="flex items-center space-x-2">
               <input
                 type="checkbox"
-                value="IT"
+                value="stores"
                 onChange={handleDepartmentChange}
               />
-              <span>IT</span>
-            </label>
-            <label className="flex items-center space-x-2">
-              <input
-                type="checkbox"
-                value="Finance"
-                onChange={handleDepartmentChange}
-              />
-              <span>Finance</span>
+              <span>Stores</span>
             </label>
           </div>
         </div>
@@ -100,8 +92,11 @@ const FormView = () => {
             required
           >
             <option value="">Select a company</option>
-            <option value="company1">Company 1</option>
-            <option value="company2">Company 2</option>
+            <option value="company1">1000</option>
+            <option value="company2">2000</option>
+            <option value="company3">3000</option>
+            <option value="company4">4000</option>
+            <option value="company5">5000</option>
           </select>
         </div>
         <button type="submit" className="bg-blue-500 text-white p-2 rounded w-full text-center">
