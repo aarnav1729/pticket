@@ -10,6 +10,6 @@ const FeedbackSchema = new mongoose.Schema({
   resolution: { type: String }, // Ensure this field is included
   createdAt: { type: Date, default: Date.now },
   resolvedAt: { type: Date }
-});
+}, { collection: 'pstickets' });
 
 module.exports = mongoose.model('Feedback', FeedbackSchema);
