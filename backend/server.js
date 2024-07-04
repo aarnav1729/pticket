@@ -11,7 +11,7 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: 'https://peaft.netlify.app' 
+  origin: 'https://psticket.netlify.app' 
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); 
