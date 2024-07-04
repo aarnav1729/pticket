@@ -108,19 +108,19 @@ const ManagerialView = () => {
           <tbody>
             {sortedTickets.map(ticket => (
               <tr key={ticket._id} className="hover:bg-gray-700">
-                <td className="py-2 px-4 border-b border-gray-600">{ticket.description}</td>
-                <td className="py-2 px-4 border-b border-gray-600">{formatDate(ticket.createdAt)}</td>
-                <td className="py-2 px-4 border-b border-gray-600">{formatDate(ticket.resolvedAt)}</td>
-                <td className="py-2 px-4 border-b border-gray-600">{ticket.companyCode}</td>
-                <td className="py-2 px-4 border-b border-gray-600">{ticket.departments.join(', ')}</td>
-                <td className={`py-2 px-4 border-b border-gray-600 ${ticket.status === 'resolved' ? 'text-green-500' : ticket.status === 'in progress' ? 'text-yellow-500' : 'text-red-500'}`}>
+                <td className="py-2 px-4 border-b text-white">{ticket.description}</td>
+                <td className="py-2 px-4 border-b text-white">{formatDate(ticket.createdAt)}</td>
+                <td className="py-2 px-4 border-b text-white">{formatDate(ticket.resolvedAt)}</td>
+                <td className="py-2 px-4 border-b text-white">{ticket.companyCode}</td>
+                <td className="py-2 px-4 border-b text-white">{ticket.departments.join(', ')}</td>
+                <td className={`py-2 px-4 border-b text-white ${ticket.status === 'resolved' ? 'text-green-600' : ticket.status === 'in progress' ? 'text-yellow-600' : 'text-red-600'}`}>
                   {ticket.status}
                 </td>
                 <td className="py-2 px-4 border-b border-gray-600">
-                  <button onClick={() => handleChangeStatus(ticket._id, 'in progress')} className="bg-yellow-500 text-white p-2 rounded mr-2">
+                  <button onClick={() => handleChangeStatus(ticket._id, 'in progress')} className="bg-yellow-600 text-white p-2 rounded mr-2">
                     In Progress
                   </button>
-                  <button onClick={() => setSelectedTicket(ticket._id)} className="bg-green-500 text-white p-2 rounded">
+                  <button onClick={() => setSelectedTicket(ticket._id)} className="bg-green-600 text-white p-2 rounded">
                     Resolved
                   </button>
                 </td>
@@ -134,10 +134,10 @@ const ManagerialView = () => {
           isOpen={!!selectedTicket}
           onRequestClose={closeModal}
           contentLabel="Resolution Modal"
-          className="bg-white p-4 rounded shadow-md mx-auto my-12 max-w-lg relative"
+          className="bg-black p-4 rounded shadow-md mx-auto my-12 max-w-lg relative"
           overlayClassName="fixed inset-0 bg-gray-600 bg-opacity-75 flex justify-center items-center"
         >
-          <button onClick={closeModal} className="absolute top-2 right-2 text-gray-500 hover:text-gray-700">
+          <button onClick={closeModal} className="absolute top-2 right-2 text-white hover:text-red-600">
             &times;
           </button>
           <h3 className="text-xl mb-2">Enter Resolution for Ticket</h3>
