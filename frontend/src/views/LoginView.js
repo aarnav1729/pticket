@@ -10,9 +10,9 @@ const LoginView = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const passwords = {
-      stores: 'storespassword',
-      procurement: 'password',
-      Admin: 'adminpassword'
+      stores: 'spassword',
+      procurement: 'ppassword',
+      Admin: 'apassword'
     };
 
     if (passwords[department] === password) {
