@@ -96,13 +96,13 @@ const ManagerialView = () => {
         <table className="min-w-full bg-gray-900 shadow-md rounded-lg">
           <thead className="bg-blue-500 text-white">
             <tr>
-              <th className="sticky top-0 py-2 px-4 border-b border-blue-700">Description</th>
-              <th className="sticky top-0 py-2 px-4 border-b border-blue-700">Date Created</th>
-              <th className="sticky top-0 py-2 px-4 border-b border-blue-700">Date Resolved</th>
-              <th className="sticky top-0 py-2 px-4 border-b border-blue-700">Company</th>
-              <th className="sticky top-0 py-2 px-4 border-b border-blue-700">Department</th>
-              <th className="sticky top-0 py-2 px-4 border-b border-blue-700">Status</th>
-              <th className="sticky top-0 py-2 px-4 border-b border-blue-700">Actions</th>
+              <th className="sticky top-0 py-2 px-4 border-b ">Description</th>
+              <th className="sticky top-0 py-2 px-4 border-b ">Date Created</th>
+              <th className="sticky top-0 py-2 px-4 border-b ">Date Resolved</th>
+              <th className="sticky top-0 py-2 px-4 border-b ">Company</th>
+              <th className="sticky top-0 py-2 px-4 border-b ">Department</th>
+              <th className="sticky top-0 py-2 px-4 border-b ">Status</th>
+              <th className="sticky top-0 py-2 px-4 border-b">Actions</th>
             </tr>
           </thead>
           <tbody>
