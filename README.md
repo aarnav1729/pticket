@@ -1,4 +1,4 @@
-# Feedback Tool
+# Communication Tool to handle Tickets between Procurement and Stores Departments
 
 ## Introduction
 This web application allows departments to submit and track feedback. It includes features for creating feedback tickets, viewing pending and resolved tickets, and sending automated email notifications.
@@ -18,8 +18,8 @@ This web application allows departments to submit and track feedback. It include
 ### Setup
 1. Clone the repository:
     ```bash
-    git clone https://github.com/your-repo/feedback-tool.git
-    cd feedback-tool
+    git clone [https://github.com/your-repo/feedback-tool.git](https://github.com/aarnav1729/pticket.git)
+    cd pticket
     ```
 2. Install dependencies for both frontend and backend:
     ```bash
