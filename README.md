@@ -18,7 +18,7 @@ This web application allows departments to submit and track issues with material
 ### Setup
 1. Clone the repository:
     ```bash
-    git clone [https://github.com/your-repo/feedback-tool.git](https://github.com/aarnav1729/pticket.git)
+    git clone https://github.com/your-repo/feedback-tool.git
     cd pticket
     ```
 2. Install dependencies for both frontend and backend:
