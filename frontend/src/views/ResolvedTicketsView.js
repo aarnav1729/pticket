@@ -83,6 +83,7 @@ const ResolvedTicketsView = () => {
               <th className="sticky top-0 py-2 px-4 border-b">Company</th>
               <th className="sticky top-0 py-2 px-4 border-b">Department</th>
               <th className="sticky top-0 py-2 px-4 border-b">Resolution</th>
+              <th className="sticky top-0 py-2 px-4 border-b">Actions</th>
             </tr>
           </thead>
           <tbody>
