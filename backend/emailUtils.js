@@ -12,7 +12,7 @@ const transporter = nodemailer.createTransport({
 const sendEmail = async (feedback) => {
   const mailOptions = {
     from: process.env.EMAIL_USER,
-    to: feedback.departmentEmails.join(', '), // Use departmentEmails
+    to: feedback.departmentEmails.join(', '), 
     subject: 'Issue Notification',
     text: `The following issue is still unresolved:\n\n${feedback.description}\n\nPlease address it as soon as possible.`,
   };
@@ -33,6 +33,6 @@ const sendWeeklyEmails = async () => {
 };
 
 module.exports = {
-  sendEmail, // Export sendEmail for immediate notifications
+  sendEmail,
   sendWeeklyEmails,
 };
