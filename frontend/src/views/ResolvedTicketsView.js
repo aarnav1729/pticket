@@ -46,13 +46,16 @@ const ResolvedTicketsView = () => {
 
   const reopenTicket = async (id) => {
     try {
-      await axios.put(`https://pticket.onrender.com/api/feedback/${id}/reopen`);
+      console.log(`Reopening ticket with ID: ${id}`);
+      const response = await axios.put(`https://pticket.onrender.com/api/feedback/${id}/reopen`);
+      console.log('Ticket reopened:', response.data);
+
       // Refresh the tickets
-      const response = await axios.get('https://pticket.onrender.com/api/feedback?status=resolved');
-      setTickets(response.data);
-      setFilteredTickets(response.data);
+      const refreshedTickets = await axios.get('https://pticket.onrender.com/api/feedback?status=resolved');
+      setTickets(refreshedTickets.data);
+      setFilteredTickets(refreshedTickets.data);
     } catch (error) {
-      console.error(error);
+      console.error('Error reopening ticket:', error);
     }
   };
 
