@@ -2,11 +2,10 @@ const express = require('express');
 const multer = require('multer');
 const router = express.Router();
 const Feedback = require('../models/Feedback');
-const { sendEmail } = require('../emailUtils'); // Import sendEmail function
+const { sendEmail } = require('../emailUtils'); 
 
-const upload = multer({ dest: 'uploads/' }); // Specify the directory for storing uploaded files
+const upload = multer({ dest: 'uploads/' }); 
 
-// Route to create a new feedback
 router.post('/', upload.single('attachment'), async (req, res) => {
   const { description, departments, companyCode } = req.body;
   const attachment = req.file ? req.file.filename : null;
@@ -15,7 +14,6 @@ router.post('/', upload.single('attachment'), async (req, res) => {
     return res.status(400).json({ error: 'All required fields must be filled' });
   }
 
-  // Ensure departments is an array
   let departmentsArray;
   try {
     departmentsArray = JSON.parse(departments);
@@ -26,7 +24,6 @@ router.post('/', upload.single('attachment'), async (req, res) => {
     return res.status(400).json({ error: 'Invalid departments format' });
   }
 
-  // Add department emails based on the departments
   const departmentEmails = departmentsArray.map(department => {
     switch (department) {
       case 'procurement':
@@ -42,21 +39,19 @@ router.post('/', upload.single('attachment'), async (req, res) => {
     const feedback = new Feedback({
       description,
       departments: departmentsArray,
-      departmentEmails, // Include department emails
+      departmentEmails,
       attachment,
       companyCode
     });
     await feedback.save();
     res.status(201).json(feedback);
     
-    // Send email notification
     await sendEmail(feedback);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
 });
 
-// Route to get feedbacks, optionally filtering by department or status
 router.get('/', async (req, res) => {
   const { department, status } = req.query;
   try {
@@ -74,7 +69,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Route to update feedback status and resolution
 router.put('/:id', async (req, res) => {
   const { id } = req.params;
   const { status, resolution } = req.body;
@@ -84,6 +78,22 @@ router.put('/:id', async (req, res) => {
       updateFields.resolvedAt = new Date();
     }
     const feedback = await Feedback.findByIdAndUpdate(id, updateFields, { new: true });
+    res.json(feedback);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
+// Route to reopen a feedback
+router.put('/:id/reopen', async (req, res) => {
+  const { id } = req.params;
+  try {
+    const feedback = await Feedback.findByIdAndUpdate(id, { status: 'pending', resolvedAt: null }, { new: true });
+    if (!feedback) {
+      return res.status(404).json({ error: 'Feedback not found' });
+    }
+
+    await sendEmail(feedback, 'reopen'); // Send email for reopened ticket
     res.json(feedback);
   } catch (error) {
     res.status(400).json({ error: error.message });

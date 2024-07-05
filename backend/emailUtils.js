@@ -9,12 +9,22 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-const sendEmail = async (feedback) => {
+const sendEmail = async (feedback, context = 'new') => {
+  let subject, message;
+
+  if (context === 'reopen') {
+    subject = 'Ticket Reopened';
+    message = `The following issue has been reopened:\n\n${feedback.description}\n\nPlease address it as soon as possible.`;
+  } else {
+    subject = 'New Issue Notification';
+    message = `A new issue has been raised:\n\n${feedback.description}\n\nPlease address it as soon as possible.`;
+  }
+
   const mailOptions = {
     from: process.env.EMAIL_USER,
     to: feedback.departmentEmails.join(', '),
-    subject: 'Issue Notification',
-    text: `The following issue is still unresolved:\n\n${feedback.description}\n\nPlease address it as soon as possible.`,
+    subject,
+    text: message,
   };
 
   try {
