@@ -44,6 +44,18 @@ const ResolvedTicketsView = () => {
     setFilteredTickets(filtered);
   };
 
+  const reopenTicket = async (id) => {
+    try {
+      await axios.put(`https://pticket.onrender.com/api/feedback/${id}/reopen`);
+      // Refresh the tickets
+      const response = await axios.get('https://pticket.onrender.com/api/feedback?status=resolved');
+      setTickets(response.data);
+      setFilteredTickets(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const sortedTickets = filteredTickets.sort((a, b) => new Date(b.resolvedAt) - new Date(a.resolvedAt));
 
   return (
@@ -79,6 +91,14 @@ const ResolvedTicketsView = () => {
                 <td className="py-2 px-4 border-b text-white">{ticket.companyCode}</td>
                 <td className="py-2 px-4 border-b text-white">{ticket.departments.join(', ')}</td>
                 <td className="py-2 px-4 border-b text-white">{ticket.resolution}</td>
+                <td className="py-2 px-4 border-b">
+                  <button
+                    onClick={() => reopenTicket(ticket._id)}
+                    className="bg-red-600 text-white p-2 rounded"
+                  >
+                    Reopen
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>
