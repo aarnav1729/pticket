@@ -15,8 +15,19 @@ router.post('/', upload.single('attachment'), async (req, res) => {
     return res.status(400).json({ error: 'All required fields must be filled' });
   }
 
+  // Ensure departments is an array
+  let departmentsArray;
+  try {
+    departmentsArray = JSON.parse(departments);
+    if (!Array.isArray(departmentsArray)) {
+      throw new Error('Departments should be an array');
+    }
+  } catch (error) {
+    return res.status(400).json({ error: 'Invalid departments format' });
+  }
+
   // Add department emails based on the departments
-  const departmentEmails = departments.map(department => {
+  const departmentEmails = departmentsArray.map(department => {
     switch (department) {
       case 'procurement':
         return 'aarnavsingh836@gmail.com';
@@ -30,7 +41,7 @@ router.post('/', upload.single('attachment'), async (req, res) => {
   try {
     const feedback = new Feedback({
       description,
-      departments: JSON.parse(departments),
+      departments: departmentsArray,
       departmentEmails, // Include department emails
       attachment,
       companyCode
