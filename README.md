@@ -1,7 +1,7 @@
-# Communication Tool to handle Tickets between Procurement and Stores Departments
+# Communication Tool to handle raising, resolving, and reopening Tickets between Procurement and Stores Departments
 
 ## Introduction
-This web application allows departments to submit and track feedback. It includes features for creating feedback tickets, viewing pending and resolved tickets, and sending automated email notifications.
+This web application allows departments to submit and track issues with material coming into the factory. It includes features for raising issue tickets, viewing pending and resolved tickets, and sending automated email notifications.
 
 ## Features
 - Submit feedback with attachments
