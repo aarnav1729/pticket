@@ -10,6 +10,13 @@ dotenv.config();
 
 const app = express();
 
+const corsOptions = {
+  origin: 'https://psticket.netlify.app', // Update this to your front-end URL
+  optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
+
 // Middleware
 app.use(cors());
 app.use(express.json());
