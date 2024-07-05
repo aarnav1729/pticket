@@ -55,10 +55,11 @@ This web application allows departments to submit and track feedback. It include
 3. **Email Notifications**: The system will automatically send emails as configured.
 
 ## Demo
-[Link to Demo Video](https://link-to-your-video.com)
+https://github.com/aarnav1729/pticket/assets/72580375/06b30549-9b4c-4b2b-8630-aed439e24fc8
+
 
 ## Contribution
-If you would like to contribute, please fork the repository and use a feature branch. Pull requests are warmly welcome.
+If you would like to contribute, please fork the repository and use a feature branch. Pull requests are welcome.
 
 ## License
 [MIT License](LICENSE)
