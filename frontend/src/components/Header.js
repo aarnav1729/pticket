@@ -9,7 +9,7 @@ const Header = () => {
 
   return (
     <header className="bg-gray-800 text-white p-4 flex justify-between items-center font-sans">
-      <div className="text-2xl">Feedback Tool</div>
+      <div className="text-2xl">PS Ticketing Tool</div>
       <button onClick={() => setIsOpen(!isOpen)} className="md:hidden">
         <FontAwesomeIcon icon={faBars} />
       </button>

@@ -4,7 +4,7 @@ import axios from 'axios';
 import Modal from 'react-modal';
 import moment from 'moment';
 
-Modal.setAppElement('#root'); // Ensure to match your root element
+Modal.setAppElement('#root'); 
 
 const AdminView = () => {
   const [tickets, setTickets] = useState([]);
